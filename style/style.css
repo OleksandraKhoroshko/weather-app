@@ -59,3 +59,9 @@ ul {
   height: 130px;
   width: 100px;
 }
+a{
+  font-weight: bolder;
+}
+.signature{
+  color: #FE9D00;
+}
