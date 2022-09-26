@@ -1,4 +1,4 @@
-// Feature #1
+// Current Day
 let currentTime = new Date();
 let days = [
   "Sunday",
@@ -7,7 +7,7 @@ let days = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 let months = [
   "January",
@@ -21,34 +21,36 @@ let months = [
   "September",
   "October",
   "November",
-  "December"
-  ];
+  "December",
+];
 
-let day = document.querySelector("#day");
-day.innerHTML = days[currentTime.getDay()];
+document.querySelector("#day").innerHTML = days[currentTime.getDay()];
 
-let month = document.querySelector("#month");
-month.innerHTML = months[currentTime.getMonth()]; 
+document.querySelector("#month").innerHTML = months[currentTime.getMonth()];
 
-let today = document.querySelector("#today");
-today.innerHTML = currentTime.getDate();
+document.querySelector("#today").innerHTML = currentTime.getDate();
 
-let year = document.querySelector("#year");
-year.innerHTML = currentTime.getFullYear();
-
+document.querySelector("#year").innerHTML = currentTime.getFullYear();
 
 // Week 5
 function displayTemperature(response) {
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = response.data.name;
-  let newTemperature = document.querySelector("#current-temperature")
-  newTemperature.innerHTML = Math.round(response.data.main.temp);
+  let newTemperature = document.querySelector("#current-temperature");
+  celsiusTemperature = response.data.main.temp;
+  newTemperature.innerHTML = Math.round(celsiusTemperature);
   let currentWind = document.querySelector(".wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed);
   let currentHumidity = document.querySelector(".humidity");
   currentHumidity.innerHTML = Math.round(response.data.main.humidity);
   let currentCondition = document.querySelector(".weather-condition");
-  currentCondition.innerHTML = Math.round(response.data.weather[0].main);
+  currentCondition.innerHTML = Math.round(response.data.weather[0].description);
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(citySearch) {
@@ -60,7 +62,7 @@ function searchCity(citySearch) {
 function enterCity(event) {
   event.preventDefault();
   let citySearch = document.querySelector("#exampleInputEmail1").value;
-  let city = document.querySelector("#location")
+  let city = document.querySelector("#location");
   city.innerHTML = citySearch;
   searchCity(citySearch);
 }
@@ -81,21 +83,28 @@ function getCurrentLocation(event) {
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", getCurrentLocation);
 
+// Unit conversion
+function showFahrenheit(event) {
+  event.preventDefault();
+  let newTemperature = document.querySelector("#current-temperature");
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let degree = (celsiusTemperature * 9) / 5 + 32;
+  newTemperature.innerHTML = Math.round(degree);
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+  let newTemperature = document.querySelector("#current-temperature");
+  newTemperature.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
 let form = document.querySelector("form");
 form.addEventListener("submit", enterCity);
-
-// Feature #3
-//function showCelsius() {
-    //temperature.innerHTML = "30";
-//}
-
-//function showFahrenheit() {
-    //let degree = ((30*9)/5+32);
-    //temperature.innerHTML = degree;
-//}
-
-//let celsius = document.querySelector("#celsius");
-//celsius.addEventListener("click", showCelsius);
-//let fahrenheit = document.querySelector("#fahrenheit");
-//fahrenheit.addEventListener("click", showFahrenheit); 
-
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", showCelsius);
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheit);

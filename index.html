@@ -28,17 +28,23 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
-      <button type="button" class="btn btn-primary" id="current">Current</button>
+      <button type="button" class="btn btn-primary" id="current">
+        Current
+      </button>
       <section>
         <div class="current-weather">
           <img
             src="https://cdn-icons-png.flaticon.com/512/2925/2925521.png"
             alt="Sunny"
             width="200px"
+            id="icon"
           />
-          <br>
+          <br />
           <span class="card-text" id="current-temperature">30 </span>
-          <a href="#" style="text-decoration: none" id="celsius">°С</a>  |
+          <a href="#" style="text-decoration: none" id="celsius" class="active"
+            >°С</a
+          >
+          |
           <a href="#" style="text-decoration: none" id="fahrenheit">°F</a>
         </div>
         <h1>
@@ -47,7 +53,7 @@
             alt="Map mark"
             width="40px"
           />
-          <span id="location"> Dnipro, Ukraine</span> 
+          <span id="location"> Dnipro, Ukraine</span>
         </h1>
         <p class="today">
           <strong id="day">Sunday, </strong>
@@ -58,12 +64,7 @@
         <div class="list-of-conditions">
           <ul>
             <li>
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/3436/premium/3436226.png?token=exp=1661171380~hmac=9ae2b0cfe191fad019b7906eaf6d9b2b"
-                alt="Barometer"
-                width="30px"
-              />
-              <p class="condition"> <span class="weather-condition"></span></p>
+              <p class="condition weather-condition"></p>
             </li>
             <li>
               <img
@@ -71,7 +72,7 @@
                 alt="Wind"
                 width="30px"
               />
-              <p class="condition">Wind - <span class="wind"></span> km/h</p>
+              <p class="condition">Wind - <span class="wind"></span> m/h</p>
             </li>
             <li>
               <img
@@ -79,7 +80,9 @@
                 alt="Humidity"
                 width="30px"
               />
-              <p class="condition">Humidity - <span class="humidity"></span> %</p>
+              <p class="condition">
+                Humidity - <span class="humidity"></span> %
+              </p>
             </li>
           </ul>
         </div>
@@ -164,7 +167,13 @@
           </div>
         </div>
       </div>
-      <p class="signature"><a href="https://github.com/OleksandraKhoroshko/weather-app" target="_blank">Open-source code</a>, by Oleksandra</p>
+      <p class="signature">
+        <a
+          href="https://github.com/OleksandraKhoroshko/weather-app"
+          target="_blank"
+          >Open-source code</a
+        >, by Oleksandra
+      </p>
     </div>
     <script src="./app/app.js"></script>
   </body>

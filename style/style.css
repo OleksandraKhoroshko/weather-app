@@ -17,8 +17,8 @@ button {
   left: 260px;
 }
 #current {
-  background-color: #FE9D00;
-  border-color: #FE9D00;
+  background-color: #fe9d00;
+  border-color: #fe9d00;
   position: relative;
   top: -92px;
   left: 350px;
@@ -59,9 +59,13 @@ ul {
   height: 130px;
   width: 100px;
 }
-a{
+a {
   font-weight: bolder;
 }
-.signature{
-  color: #FE9D00;
+.signature {
+  color: #fe9d00;
+}
+.current-weather .active {
+  color: black;
+  cursor: default;
 }
