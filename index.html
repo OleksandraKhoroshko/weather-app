@@ -11,169 +11,124 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <title>Document</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap"
+      rel="stylesheet"
+    />
+    <title>WeatherApp</title>
+    <script src="https://unpkg.com/axios@1.0.0/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="container main-box">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Search city</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            placeholder="Search"
-          />
+    <div class="container">
+      <div class="main-box">
+        <div class="row">
+          <div class="col-6">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Search your city</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Search"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <button type="button" class="btn btn-primary" id="current">
+              Current
+            </button>
+          </div>
+          <div class="col-6">
+            <span id="current-time"></span>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-      </form>
-      <button type="button" class="btn btn-primary" id="current">
-        Current
-      </button>
-      <section>
-        <div class="current-weather">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/2925/2925521.png"
-            alt="Sunny"
-            width="200px"
-            id="icon"
-          />
-          <br />
-          <span class="card-text" id="current-temperature">30 </span>
-          <a href="#" style="text-decoration: none" id="celsius" class="active"
-            >°С</a
-          >
-          |
-          <a href="#" style="text-decoration: none" id="fahrenheit">°F</a>
-        </div>
-        <h1>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/854/854878.png"
-            alt="Map mark"
-            width="40px"
-          />
-          <span id="location"> Dnipro, Ukraine</span>
-        </h1>
-        <p class="today">
-          <strong id="day">Sunday, </strong>
-          <span id="month">August </span>
-          <span id="today">14/</span>
-          <span id="year">2022</span>
-        </p>
-        <div class="list-of-conditions">
-          <ul>
-            <li>
-              <p class="condition weather-condition"></p>
-            </li>
-            <li>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2204/2204367.png"
-                alt="Wind"
-                width="30px"
-              />
-              <p class="condition">Wind - <span class="wind"></span> m/h</p>
-            </li>
-            <li>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/4005/4005754.png"
-                alt="Humidity"
-                width="30px"
-              />
-              <p class="condition">
-                Humidity - <span class="humidity"></span> %
+
+        <div class="row">
+          <div class="col-6">
+            <div class="main-info">
+              <h1>
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/854/854878.png"
+                  alt="Map mark"
+                  width="40px"
+                />
+                <span id="location"> Dnipro, Ukraine</span>
+              </h1>
+              <p class="today">
+                <strong id="day">Sunday </strong>,
+                <span id="month">August </span>
+                <span id="today">14 </span>/
+                <span id="year">2022</span>
               </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Monday</h5>
+              <div class="list-of-conditions">
+                <ul>
+                  <li>
+                    <p class="condition weather-condition"></p>
+                  </li>
+                  <li>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/2204/2204367.png"
+                      alt="Wind"
+                      width="30px"
+                    />
+                    <p class="condition">
+                      Wind - <span class="wind"></span> m/s
+                    </p>
+                  </li>
+                  <li>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/4005/4005754.png"
+                      alt="Humidity"
+                      width="30px"
+                    />
+                    <p class="condition">
+                      Humidity - <span class="humidity"></span> %
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="current-weather">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2925/2925521.png"
-                class="card-img-top card-img"
                 alt="Sunny"
+                width="200px"
+                id="icon"
               />
-              <p class="card-text">30 °С</p>
+
+              <span id="current-temperature">30 </span>
+
+              <div class="degrees">
+                <a
+                  href="#"
+                  style="text-decoration: none"
+                  id="celsius"
+                  class="active"
+                  >°С</a
+                >
+                |
+                <a href="#" style="text-decoration: none" id="fahrenheit">°F</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Tuesday</h5>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2925/2925521.png"
-                class="card-img-top card-img"
-                alt="Sunny"
-              />
-              <p class="card-text">33 °С</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Wednesday</h5>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/1146/1146856.png"
-                class="card-img-top card-img"
-                alt="Sunny"
-              />
-              <p class="card-text">29 °С</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Thursday</h5>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/1146/1146860.png"
-                class="card-img-top card-img"
-                alt="Sunny"
-              />
-              <p class="card-text">27 °С</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Friday</h5>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/1146/1146869.png"
-                class="card-img-top card-img"
-                alt="Sunny"
-              />
-              <p class="card-text">30 °С</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body card-style">
-              <h5 class="card-title">Saturday</h5>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2925/2925521.png"
-                class="card-img-top card-img"
-                alt="Sunny"
-              />
-              <p class="card-text">31 °С</p>
-            </div>
-          </div>
-        </div>
+        <div class="weather-forecast" id="forecast"></div>
+        <p class="signature">
+          <a
+            href="https://github.com/OleksandraKhoroshko/weather-app"
+            target="_blank"
+            >Open-source code,</a
+          >
+          by Oleksandra
+        </p>
       </div>
-      <p class="signature">
-        <a
-          href="https://github.com/OleksandraKhoroshko/weather-app"
-          target="_blank"
-          >Open-source code</a
-        >, by Oleksandra
-      </p>
     </div>
     <script src="./app/app.js"></script>
   </body>
